@@ -1,0 +1,44 @@
+{
+  "name": "@tscircuit/assembly-viewer",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "cosmos",
+    "build": "tsup-node ./lib/index.ts --dts --format esm --sourcemap",
+    "build:site": "cosmos-export",
+    "vercel-build": "bun run build:site",
+    "format": "biome format --write .",
+    "format:check": "biome format ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@tscircuit/core": "^0.0.245",
+    "@tscircuit/props": "^0.0.113",
+    "@types/bun": "latest",
+    "@types/debug": "^4.1.12",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "circuit-json": "^0.0.117",
+    "circuit-to-svg": "^0.0.96",
+    "react": "18",
+    "react-cosmos": "^6.2.1",
+    "react-cosmos-plugin-vite": "^6.2.0",
+    "react-dom": "18",
+    "react-reconciler": "^0.31.0",
+    "tsup": "^8.3.5",
+    "vite": "^6.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0",
+    "@tscircuit/core": "*",
+    "@tscircuit/props": "*",
+    "circuit-to-svg": "*"
+  },
+  "dependencies": {
+    "debug": "^4.4.0",
+    "performance-now": "^2.1.0",
+    "use-mouse-matrix-transform": "^1.2.2"
+  }
+}
