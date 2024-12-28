@@ -4,15 +4,16 @@ import { renderToCircuitJson } from "lib/dev/render-to-circuit-json"
 export default () => (
   <AssemblyViewer
     circuitJson={renderToCircuitJson(
-      <board width="10mm" height="10mm">
-        <resistor name="R1" resistance={1000} pcbX={-10} />
-        <capacitor name="C1" capacitance="1uF" pcbX={10} pcbY={10} />
+      <board width="20mm" height="20mm">
+        <resistor name="R1" resistance={1000} pcbX={-6}  footprint={"0402"} />
+        <capacitor name="C1" capacitance="1uF" pcbX={3} pcbY={5}  footprint={"0402"}/>
         <capacitor
           name="C2"
           pcbRotation={90}
           capacitance="1uF"
           pcbX={0}
           pcbY={-40}
+          footprint={"0402"}
         />
         <chip
           name="U1"
