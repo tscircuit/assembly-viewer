@@ -85,7 +85,7 @@ export const AssemblyViewer = ({
       ref={containerRef}
       style={{
         position: "relative",
-        backgroundColor: "#F5F1ED",
+        backgroundColor: "#FFFFFF",
         overflow: "hidden",
         minHeight: "300px",
         ...containerStyle,
