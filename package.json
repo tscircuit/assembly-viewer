@@ -21,7 +21,7 @@
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
     "circuit-json": "^0.0.261",
-    "circuit-to-svg": "^0.0.347",
+    "circuit-to-svg": "^0.0.354",
     "react": "18",
     "react-cosmos": "^6.2.1",
     "react-cosmos-plugin-vite": "^6.2.0",
