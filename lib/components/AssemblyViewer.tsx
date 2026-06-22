@@ -1,14 +1,17 @@
-import { useMouseMatrixTransform } from "use-mouse-matrix-transform"
-import { convertCircuitJsonToAssemblySvg } from "circuit-to-svg"
-import { useMemo, useRef, useState } from "react"
-import { useResizeHandling } from "../hooks/use-resize-handling"
+import type { CircuitJson } from "circuit-json"
 import {
-  identity,
+  convertCircuitJsonToAssemblySvg,
+  convertCircuitJsonToPinoutSvg,
+} from "circuit-to-svg"
+import { enableDebug } from "lib/utils/debug"
+import { useMemo, useRef, useState } from "react"
+import {
   fromString,
+  identity,
   toString as transformToString,
 } from "transformation-matrix"
-import type { CircuitJson } from "circuit-json"
-import { enableDebug } from "lib/utils/debug"
+import { useMouseMatrixTransform } from "use-mouse-matrix-transform"
+import { useResizeHandling } from "../hooks/use-resize-handling"
 
 interface Props {
   circuitJson: any[]
@@ -17,6 +20,7 @@ interface Props {
   debugGrid?: boolean
   editingEnabled?: boolean
   debug?: boolean
+  showPinout?: boolean
 }
 
 export const AssemblyViewer = ({
@@ -24,6 +28,7 @@ export const AssemblyViewer = ({
   containerStyle,
   debugGrid = false,
   debug = false,
+  showPinout = false,
 }: Props) => {
   if (debug) {
     enableDebug()
@@ -45,11 +50,15 @@ export const AssemblyViewer = ({
   const svgString = useMemo(() => {
     if (!containerWidth || !containerHeight) return ""
 
-    return convertCircuitJsonToAssemblySvg(circuitJson as any, {
+    const convertCircuitJsonToSvg = showPinout
+      ? convertCircuitJsonToPinoutSvg
+      : convertCircuitJsonToAssemblySvg
+
+    return convertCircuitJsonToSvg(circuitJson as any, {
       width: containerWidth,
       height: containerHeight || 720,
     })
-  }, [circuitJson, containerWidth, containerHeight])
+  }, [circuitJson, containerWidth, containerHeight, showPinout])
 
   const realToSvgProjection = useMemo(() => {
     if (!svgString) return identity()
