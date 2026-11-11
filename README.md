@@ -18,6 +18,12 @@ export default () => (
 )
 ```
 
+Render the same circuit as a pinout by enabling `showPinout`:
+
+```tsx
+<AssemblyViewer circuitJson={circuitJson} showPinout />
+```
+
 ## References
 
 - This repo is heavily based on the [schematic-viewer](https://github.com/tscircuit/schematic-viewer) repo, if you're trying to add functionality you may
